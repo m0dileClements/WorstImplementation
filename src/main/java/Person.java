@@ -18,6 +18,16 @@ public class Person
 		System.out.println("F: " + f);
 	}
 	
+	public Person makePerson(Person that) {
+		if ((this.getAge() < 18) || (that.getAge() < 18)) {
+			return null; // don't let minors have kids
+		} else if (this == that) {
+			return null; // parents need to be 2 different people
+		}
+		Person child = new Person(this.getFname(),that.getLname(), 0);
+		return child;
+	}
+	
 	@Override
 	public String toString() {
 		return "[Person] " + fname + " " + lname + " (" + age + ")";
